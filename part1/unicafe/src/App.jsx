@@ -24,6 +24,14 @@ const Display = (props) => {
   )
 }
 
+const statisticsLine = (text, value) => {
+  return (
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
+  )
+}
 const setValue = (value, setter) => {
   console.log('value now', value)
   setter(value)
@@ -39,12 +47,16 @@ const Statistics = ({ good, neutral, bad }) => {
   } else {
     return (
       <div>
-        <Display text="good " value={good} />
-        <Display text="neutral " value={neutral} />
-        <Display text="bad " value={bad} />
-        <Display text="all " value={all} />
-        <Display text="average " value={(good - bad) / all} />
-        <Display text="positive " value={(good / all) * 100 + ' %'} />
+        <table>
+          <tbody>
+            {statisticsLine('good', good)}
+            {statisticsLine('neutral', neutral)}
+            {statisticsLine('bad', bad)}
+            {statisticsLine('all', all)}
+            {statisticsLine('average', (good - bad) / all)}
+            {statisticsLine('positive', (good / all) * 100 + ' %')}
+          </tbody>
+        </table>
       </div>
     )
   }
