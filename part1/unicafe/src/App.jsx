@@ -29,6 +29,27 @@ const setValue = (value, setter) => {
   setter(value)
 }
 
+const Statistics = ({ good, neutral, bad }) => {
+  const all = good + neutral + bad
+  console.log(all)
+  if (all === 0) {
+    return (
+      <p>No feedback given</p>
+    )
+  } else {
+    return (
+      <div>
+        <Display text="good " value={good} />
+        <Display text="neutral " value={neutral} />
+        <Display text="bad " value={bad} />
+        <Display text="all " value={all} />
+        <Display text="average " value={(good - bad) / all} />
+        <Display text="positive " value={(good / all) * 100 + ' %'} />
+      </div>
+    )
+  }
+}
+  
 
 const App = () => {
  
@@ -43,12 +64,7 @@ const App = () => {
       <Button handleClick={() => setValue(neutral+1, setNeutral) } text="neutral" />
       <Button handleClick={() => setValue(bad+1, setBad)} text="bad" />
       <Header text="statistics" />
-      <Display text="good " value={good} />
-      <Display text="neutral " value={neutral} />
-      <Display text="bad " value={bad} />
-      <Display text="all " value={good + neutral + bad} /> 
-      <Display text="average " value={(good - bad) / (good + neutral + bad)} />
-      <Display text="positive " value={ (good / (good + neutral + bad)) * 100 + ' %'} />
+      <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
   )
 }
