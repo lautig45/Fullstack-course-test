@@ -46,7 +46,7 @@ const App = () => {
     setVotes(copy)
   }
   
-  
+
 
   return (
     <div>

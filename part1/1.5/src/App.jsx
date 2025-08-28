@@ -25,6 +25,7 @@ const Content = (parts) => {
     </div>
   )
 }
+
 const Total = (exercises) => {  
   console.log(exercises)
   return (
